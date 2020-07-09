@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Route from './components/Route';
+import Header from './components/Header';
 import Accordion from './components/Accordion';
 import Search from './components/Search';
 import Dropdown from './components/Dropdown';
@@ -41,15 +43,24 @@ const App = () => {
   const [selectedOption, setSelectedOption] = useState(options[0]);
   return (
     <div className='ui container'>
-      <Accordion items={items} />
-      <Search />
-      <Dropdown
-        label='Select a color'
-        selected={selectedOption}
-        onSelectedChange={setSelectedOption}
-        options={options}
-      />
-      <Translate />
+      <Header />
+      <Route path='/'>
+        <Accordion items={items} />
+      </Route>
+      <Route path='/search'>
+        <Search />
+      </Route>
+      <Route path='/dropdown'>
+        <Dropdown
+          label='Select a color'
+          selected={selectedOption}
+          onSelectedChange={setSelectedOption}
+          options={options}
+        />
+      </Route>
+      <Route path='/translate'>
+        <Translate />
+      </Route>
     </div>
   );
 };
