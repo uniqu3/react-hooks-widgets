@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import Accordion from './components/Accordion';
 import Search from './components/Search';
 import Dropdown from './components/Dropdown';
+import Translate from './components/Translate';
+
+import './App.css';
 
 const items = [
   {
@@ -37,14 +40,16 @@ const options = [
 const App = () => {
   const [selectedOption, setSelectedOption] = useState(options[0]);
   return (
-    <div>
+    <div className='ui container'>
       <Accordion items={items} />
       <Search />
       <Dropdown
+        label='Select a color'
         selected={selectedOption}
         onSelectedChange={setSelectedOption}
         options={options}
       />
+      <Translate />
     </div>
   );
 };
